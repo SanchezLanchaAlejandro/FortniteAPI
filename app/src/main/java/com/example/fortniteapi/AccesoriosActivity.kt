@@ -3,6 +3,7 @@ package com.example.fortniteapi
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fortniteapi.databinding.ActivityAccesoriosBinding
 import kotlinx.coroutines.CoroutineScope
@@ -12,14 +13,14 @@ import kotlinx.coroutines.withContext
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 class AccesoriosActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAccesoriosBinding
     private lateinit var retrofit: Retrofit
     private lateinit var apiService: ApiService
-    /*private lateinit var accesoriosAdapter: AccesoriosAdapter*/
+    private lateinit var adapter: AccesoriosAdapter
+
     private var accesoriosList = mutableListOf<CosmeticItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,13 +45,24 @@ class AccesoriosActivity : AppCompatActivity() {
                 return false
             }
         })
+
+        adapter = AccesoriosAdapter()
+        binding.rvAccesorios.setHasFixedSize(true)
+        binding.rvAccesorios.layoutManager = LinearLayoutManager(this)
+        binding.rvAccesorios.adapter = adapter
     }
 
     private fun searchByName(query: String) {
+        binding.progressBar.isVisible = true
         CoroutineScope(Dispatchers.IO).launch {
             val myResponse: Response<CosmeticsResponse> = retrofit.create(ApiService::class.java).getCosmetics(query)
             if (myResponse.isSuccessful) {
-                Log.i("Accesorios", "funciona :)")
+                val response: CosmeticsResponse = myResponse.body()!!
+                Log.i("accesorios", response.data.toString())
+                runOnUiThread {
+                    binding.progressBar.isVisible = false
+                    adapter.updateList(response.data.filter { it.tipo.tipo != "outfit" && it.tipo.tipo != "spray" })
+                }
             }else
                 Log.i("Accesorios", "no funciona :(")
         }
