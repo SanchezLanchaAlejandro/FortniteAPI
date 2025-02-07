@@ -1,5 +1,6 @@
 package com.example.fortniteapi
 
+import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fortniteapi.databinding.ItemAccesoriosBinding
@@ -9,8 +10,11 @@ class AccesoriosViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
     private var binding = ItemAccesoriosBinding.bind(view)
 
-    fun bind(accesoriosItemResponse: CosmeticItem) {
+    fun bind(accesoriosItemResponse: CosmeticItem, onItemSelected: (String) -> Unit) {
         binding.tvAccesorioName.text = accesoriosItemResponse.nombre
         Picasso.get().load(accesoriosItemResponse.imagen.url).into(binding.ivAccesorios)
+        binding.root.setOnClickListener{
+            onItemSelected(accesoriosItemResponse.id)
+        }
     }
 }

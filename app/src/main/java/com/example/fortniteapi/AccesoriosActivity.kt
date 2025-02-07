@@ -1,10 +1,12 @@
 package com.example.fortniteapi
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.fortniteapi.DetailAccesoriosActivity.Companion.ID
 import com.example.fortniteapi.databinding.ActivityAccesoriosBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -46,7 +48,7 @@ class AccesoriosActivity : AppCompatActivity() {
             }
         })
 
-        adapter = AccesoriosAdapter()
+        adapter = AccesoriosAdapter{ irDetail(it)}
         binding.rvAccesorios.setHasFixedSize(true)
         binding.rvAccesorios.layoutManager = LinearLayoutManager(this)
         binding.rvAccesorios.adapter = adapter
@@ -58,13 +60,12 @@ class AccesoriosActivity : AppCompatActivity() {
             val myResponse: Response<CosmeticsResponse> = retrofit.create(ApiService::class.java).getCosmetics(query)
             if (myResponse.isSuccessful) {
                 val response: CosmeticsResponse = myResponse.body()!!
-                Log.i("accesorios", response.data.toString())
                 runOnUiThread {
                     binding.progressBar.isVisible = false
                     adapter.updateList(response.data.filter { it.tipo.tipo != "outfit" && it.tipo.tipo != "spray" })
                 }
             }else
-                Log.i("Accesorios", "no funciona :(")
+                Log.i("accesorios", "Error en la API")
         }
     }
 
@@ -73,5 +74,11 @@ class AccesoriosActivity : AppCompatActivity() {
             .baseUrl("https://fortnite-api.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    }
+
+    private fun irDetail(id: String) {
+        val intent = Intent(this, DetailAccesoriosActivity::class.java)
+        intent.putExtra(ID, id)
+        startActivity(intent)
     }
 }

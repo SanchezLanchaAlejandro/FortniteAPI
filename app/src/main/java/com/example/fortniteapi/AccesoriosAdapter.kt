@@ -6,7 +6,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class AccesoriosAdapter(var accesoriosList: List<CosmeticItem> = emptyList()) : RecyclerView.Adapter<AccesoriosViewHolder>(){
+class AccesoriosAdapter(var accesoriosList: List<CosmeticItem> = emptyList(),
+                        private val onItemSelected: (String) -> Unit) : RecyclerView.Adapter<AccesoriosViewHolder>() {
 
     fun updateList(accesoriosList: List<CosmeticItem>) {
         this.accesoriosList = accesoriosList
@@ -21,7 +22,7 @@ class AccesoriosAdapter(var accesoriosList: List<CosmeticItem> = emptyList()) : 
     override fun getItemCount() = accesoriosList.size
 
     override fun onBindViewHolder(viewHolder: AccesoriosViewHolder, position: Int) {
-        viewHolder.bind(accesoriosList[position])
+        viewHolder.bind(accesoriosList[position], onItemSelected)
     }
 
 }
