@@ -4,6 +4,8 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="fontFamily">@font/livvic_medium</item>
+        <item name="colorSecondary">@color/white</item>
+        <item name="colorPrimary">@color/white</item>
     </style>
 
     <style name="Theme.FortniteAPI" parent="Base.Theme.FortniteAPI" />

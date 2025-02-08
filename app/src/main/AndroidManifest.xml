@@ -15,10 +15,16 @@
         android:theme="@style/Theme.FortniteAPI"
         tools:targetApi="31">
         <activity
-            android:name=".DetailAccesoriosActivity"
+            android:name=".Personajes.DetailPersonajesActivity"
             android:exported="false" />
         <activity
-            android:name=".AccesoriosActivity"
+            android:name=".Personajes.PersonajesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Accesorios.DetailAccesoriosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Accesorios.AccesoriosActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

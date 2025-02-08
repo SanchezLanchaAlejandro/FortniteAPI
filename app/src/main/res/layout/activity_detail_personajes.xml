@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/morado_claro"
-    tools:context=".Accesorios.DetailAccesoriosActivity">
+    android:background="@color/rosa_claro"
+    tools:context=".Personajes.DetailPersonajesActivity">
 
     <ImageView
-        android:id="@+id/ivAccesorio"
+        android:id="@+id/ivPersonaje"
         android:layout_width="match_parent"
         android:layout_height="480dp"
-        android:background="@color/morado_claro"
+        android:background="@color/rosa_claro"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="450dp"
         android:elevation="8dp"
-        app:cardBackgroundColor="@color/morado_fondo"
+        app:cardBackgroundColor="@color/azul_oscuro"
         app:cardCornerRadius="42dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,7 +35,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvAccesorioNombre"
+                android:id="@+id/tvPersonajeNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -45,10 +45,10 @@
                 android:textColor="@color/white"
                 android:textSize="34sp"
                 android:textStyle="bold"
-                tools:text="prueba" />
+                tools:text="Nombre del Personaje" />
 
             <TextView
-                android:id="@+id/tvAccesorioDesc"
+                android:id="@+id/tvPersonajeDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -58,7 +58,7 @@
                 android:textColor="@color/gris_claro"
                 android:textSize="30sp"
                 android:textStyle="italic"
-                tools:text="prueba" />
+                tools:text="Descripción del personaje" />
 
             <TextView
                 android:id="@+id/tvRareza"
@@ -82,7 +82,7 @@
                 android:gravity="center"
                 android:textColor="@color/gris_claro"
                 android:textSize="20sp"
-                tools:text="prueba" />
+                tools:text="Rareza del personaje" />
 
             <TextView
                 android:id="@+id/tvSet"
@@ -106,7 +106,7 @@
                 android:gravity="center"
                 android:textColor="@color/gris_claro"
                 android:textSize="20sp"
-                tools:text="prueba" />
+                tools:text="Set al que pertenece" />
 
             <TextView
                 android:id="@+id/tvTemporada"
@@ -130,10 +130,9 @@
                 android:gravity="center"
                 android:textColor="@color/gris_claro"
                 android:textSize="20sp"
-                tools:text="prueba" />
+                tools:text="Temporada de lanzamiento" />
 
         </LinearLayout>
-
 
     </androidx.cardview.widget.CardView>
 

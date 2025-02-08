@@ -1,22 +1,16 @@
-package com.example.fortniteapi
+package com.example.fortniteapi.Accesorios
 
 import android.os.Bundle
-import android.util.Log
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.isVisible
-import com.example.fortniteapi.databinding.ActivityAccesoriosBinding
+import com.example.fortniteapi.ApiService
+import com.example.fortniteapi.CosmeticsResponse
 import com.example.fortniteapi.databinding.ActivityDetailAccesoriosBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 class DetailAccesoriosActivity : AppCompatActivity() {
 

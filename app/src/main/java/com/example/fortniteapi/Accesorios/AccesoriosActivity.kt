@@ -1,17 +1,21 @@
-package com.example.fortniteapi
+package com.example.fortniteapi.Accesorios
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.widget.EditText
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.fortniteapi.DetailAccesoriosActivity.Companion.ID
+import com.example.fortniteapi.Accesorios.DetailAccesoriosActivity.Companion.ID
+import com.example.fortniteapi.ApiService
+import com.example.fortniteapi.CosmeticsResponse
 import com.example.fortniteapi.databinding.ActivityAccesoriosBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -22,8 +26,6 @@ class AccesoriosActivity : AppCompatActivity() {
     private lateinit var retrofit: Retrofit
     private lateinit var apiService: ApiService
     private lateinit var adapter: AccesoriosAdapter
-
-    private var accesoriosList = mutableListOf<CosmeticItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +39,23 @@ class AccesoriosActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
+        // Cambiar el color del texto en el campo de búsqueda
+        val searchEditText = binding.searchView.findViewById<EditText>(androidx.appcompat.R.id.search_src_text)
+        searchEditText.setTextColor(Color.WHITE)  // Texto blanco
+        searchEditText.setHintTextColor(Color.WHITE)  // Sugerencias blancas
+
+        // Cambiar el color del icono de la lupa
+        val searchIcon = binding.searchView.findViewById<ImageView>(androidx.appcompat.R.id.search_mag_icon)
+        searchIcon.setColorFilter(Color.WHITE)  // Icono de la lupa blanco
+
+        // Cambiar el color del icono de borrar (X)
+        val closeIcon = binding.searchView.findViewById<ImageView>(androidx.appcompat.R.id.search_close_btn)
+        closeIcon.setColorFilter(Color.WHITE)  // Icono de cerrar blanco
+
+        // Cambiar el color del borde del campo de búsqueda
+        val submitArea = binding.searchView.findViewById<android.widget.LinearLayout>(androidx.appcompat.R.id.submit_area)
+        submitArea.setBackgroundColor(Color.WHITE)  // Borde blanco
+
         binding.searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 searchByName(query.orEmpty())
@@ -48,7 +67,7 @@ class AccesoriosActivity : AppCompatActivity() {
             }
         })
 
-        adapter = AccesoriosAdapter{ irDetail(it)}
+        adapter = AccesoriosAdapter { irDetail(it) }
         binding.rvAccesorios.setHasFixedSize(true)
         binding.rvAccesorios.layoutManager = LinearLayoutManager(this)
         binding.rvAccesorios.adapter = adapter

@@ -1,10 +1,10 @@
-package com.example.fortniteapi
+package com.example.fortniteapi.Accesorios
 
-import android.os.Parcel
-import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fortniteapi.CosmeticItem
+import com.example.fortniteapi.R
 
 class AccesoriosAdapter(var accesoriosList: List<CosmeticItem> = emptyList(),
                         private val onItemSelected: (String) -> Unit) : RecyclerView.Adapter<AccesoriosViewHolder>() {

@@ -6,4 +6,6 @@
     <color name="morado_transparente">#B03D02BD</color>
     <color name="morado_fondo">#2a095f</color>
     <color name="morado_claro">#ddb1ff</color>
+    <color name="azul_oscuro">#48548F</color>
+    <color name="rosa_claro">#FB9AD9</color>
 </resources>

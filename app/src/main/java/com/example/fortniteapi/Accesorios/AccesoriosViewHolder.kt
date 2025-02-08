@@ -1,8 +1,8 @@
-package com.example.fortniteapi
+package com.example.fortniteapi.Accesorios
 
-import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fortniteapi.CosmeticItem
 import com.example.fortniteapi.databinding.ItemAccesoriosBinding
 import com.squareup.picasso.Picasso
 

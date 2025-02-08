@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo_principal"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".MainActivity">
@@ -11,8 +12,22 @@
     <!-- Botón para ir a la actividad de accesorios -->
     <Button
         android:id="@+id/btnAccesorios"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ver Accesorios" />
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:text="@string/ver_accesorios"
+        android:textColor="@color/morado_fondo"
+        android:textSize="18sp"
+        android:textStyle="bold" /> <!-- Fondo blanco personalizado -->
+
+    <!-- Botón para ir a la actividad de personajes -->
+    <Button
+        android:id="@+id/btnPersonajes"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/ver_personajes"
+        android:textColor="@color/morado_fondo"
+        android:textSize="18sp"
+        android:textStyle="bold" /> <!-- Fondo blanco personalizado -->
 
 </LinearLayout>
